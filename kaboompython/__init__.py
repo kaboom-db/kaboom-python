@@ -1,2 +1,2 @@
 from .base import Base
-from .cartoons import CartoonsClient, EpisodesClient
+from .cartoons import CartoonsClient, EpisodesClient, CharactersClient

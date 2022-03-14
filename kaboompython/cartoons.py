@@ -25,3 +25,16 @@ class EpisodesClient(Base):
     
     def update(self, episode_id:int, **kwargs):
         return self.request(endpoint=f'v1/cartoons/episodes/{episode_id}/', method='PATCH', data=kwargs)
+
+class CharactersClient(Base):
+    def get_characters(self, **kwargs):
+        return self.request(endpoint='v1/cartoons/characters/', params=kwargs)
+    
+    def add(self, **kwargs):
+        return self.request(endpoint='v1/cartoons/characters/', method='POST', data=kwargs)
+    
+    def detail(self, character_id: int):
+        return self.request(endpoint=f'v1/cartoons/characters/{character_id}/')
+    
+    def update(self, character_id: int, **kwargs):
+        return self.request(endpoint=f'v1/cartoons/characters/{character_id}/', method='PATCH', data=kwargs)
