@@ -64,3 +64,16 @@ class ActorsClient(Base):
     
     def update(self, actor_id: int, **kwargs):
         return self.request(endpoint=f'v1/cartoons/actors/{actor_id}/', method='PATCH', data=kwargs)
+
+class TeamsClient(Base):
+    def get_teams(self, **kwargs):
+        return self.request(endpoint='v1/cartoons/teams/', params=kwargs)
+    
+    def add(self, **kwargs):
+        return self.request(endpoint='v1/cartoons/teams/', method='POST', data=kwargs)
+    
+    def detail(self, team_id: int):
+        return self.request(endpoint=f'v1/cartoons/teams/{team_id}/')
+    
+    def update(self, team_id: int, **kwargs):
+        return self.request(endpoint=f'v1/cartoons/teams/{team_id}/', method='PATCH', data=kwargs)
