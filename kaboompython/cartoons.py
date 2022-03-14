@@ -90,3 +90,10 @@ class LocationsClient(Base):
     
     def update(self, location_id: int, **kwargs):
         return self.request(endpoint=f'v1/cartoons/locations/{location_id}/', method='PATCH', data=kwargs)
+
+class GenresClient(Base):
+    def get_genres(self, **kwargs):
+        return self.request(endpoint='v1/cartoons/genres/', params=kwargs)
+    
+    def detail(self, genre_id: int):
+        return self.request(endpoint=f'v1/cartoons/genres/{genre_id}/')
