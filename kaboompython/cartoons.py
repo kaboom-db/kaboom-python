@@ -51,3 +51,16 @@ class NetworksClient(Base):
     
     def update(self, network_id: int, **kwargs):
         return self.request(endpoint=f'v1/cartoons/networks/{network_id}/', method='PATCH', data=kwargs)
+
+class ActorsClient(Base):
+    def get_voiceactors(self, **kwargs):
+        return self.request(endpoint='v1/cartoons/actors/', params=kwargs)
+    
+    def add(self, **kwargs):
+        return self.request(endpoint='v1/cartoons/actors/', method='POST', data=kwargs)
+    
+    def detail(self, actor_id: int):
+        return self.request(endpoint=f'v1/cartoons/actors/{actor_id}/')
+    
+    def update(self, actor_id: int, **kwargs):
+        return self.request(endpoint=f'v1/cartoons/actors/{actor_id}/', method='PATCH', data=kwargs)
