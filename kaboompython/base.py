@@ -5,11 +5,8 @@ from .exceptions import KaboomException
 
 class Base:
     # INSTANCE_URL = "https://staging-kaboom.herokuapp.com/v1/"
-    INSTANCE_URL = "INSTANCE_URL"
-    ACCESS_TOKEN = "ACCESS_TOKEN"
-    DEFAULT_HEADERS = {
-        'Content-type': 'application/json'
-    }
+    INSTANCE_URL = "KABOOM_INSTANCE_URL"
+    ACCESS_TOKEN = "KABOOM_ACCESS_TOKEN"
 
     @property
     def access_token(self) -> str:
@@ -18,7 +15,6 @@ class Base:
     @access_token.setter
     def access_token(self, access_token: str) -> None:
         os.environ[self.ACCESS_TOKEN] = access_token
-        self.DEFAULT_HEADERS.update({'Authorization': 'Token ' + access_token})
 
     @property
     def url(self) -> str:
@@ -61,12 +57,13 @@ class Base:
         else:
             raise KaboomException(response.text)
 
-    def request(self, endpoint: str, method: str = "GET", data=None, headers=None, params=None):
+    def request(self, endpoint: str, method: str = "GET", data=None, params=None):
         url = f"{self.url}/{endpoint}"
-        if headers:
-            headers.update(self.DEFAULT_HEADERS)
-        else:
-            headers = self.DEFAULT_HEADERS
+        headers = {
+            'Content-type': 'application/json'
+        }
+        if self.access_token:
+            headers.update({'Authorization': 'Token ' + self.access_token})
         response = requests.request(method=method, url=url, params=params, json=data, headers=headers)
         if response.status_code == 200 or response.status_code == 201:
             return response.json()
