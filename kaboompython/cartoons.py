@@ -77,3 +77,16 @@ class TeamsClient(Base):
     
     def update(self, team_id: int, **kwargs):
         return self.request(endpoint=f'v1/cartoons/teams/{team_id}/', method='PATCH', data=kwargs)
+
+class LocationsClient(Base):
+    def get_locations(self, **kwargs):
+        return self.request(endpoint='v1/cartoons/locations/', params=kwargs)
+    
+    def add(self, **kwargs):
+        return self.request(endpoint='v1/cartoons/locations/', method='POST', data=kwargs)
+    
+    def detail(self, location_id: int):
+        return self.request(endpoint=f'v1/cartoons/locations/{location_id}/')
+    
+    def update(self, location_id: int, **kwargs):
+        return self.request(endpoint=f'v1/cartoons/locations/{location_id}/', method='PATCH', data=kwargs)
