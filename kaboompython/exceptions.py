@@ -1,0 +1,2 @@
+class KaboomException(Exception):
+    pass

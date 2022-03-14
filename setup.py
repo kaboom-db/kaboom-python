@@ -13,15 +13,15 @@ LONG_DESCRIPTION = 'A simple python package that can interface with any Kaboom i
 
 # Setting up
 setup(
-    name="kaboom-python",
+    name="kaboompython",
     version=VERSION,
     author="crxssed7",
     description=DESCRIPTION,
     long_description_content_type="text/markdown",
     long_description=long_description,
     packages=find_packages(),
-    install_requires=[],
-    keywords=['python', 'video', 'stream', 'video stream', 'camera stream', 'sockets'],
+    install_requires=['requests'],
+    keywords=['python', 'comics', 'cartoons', 'tracker'],
     classifiers=[
         "Development Status :: 1 - Planning",
         "Intended Audience :: Developers",
