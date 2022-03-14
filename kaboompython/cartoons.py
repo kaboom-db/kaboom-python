@@ -38,3 +38,16 @@ class CharactersClient(Base):
     
     def update(self, character_id: int, **kwargs):
         return self.request(endpoint=f'v1/cartoons/characters/{character_id}/', method='PATCH', data=kwargs)
+
+class NetworksClient(Base):
+    def get_networks(self, **kwargs):
+        return self.request(endpoint='v1/cartoons/networks/', params=kwargs)
+    
+    def add(self, **kwargs):
+        return self.request(endpoint='v1/cartoons/networks/', method='POST', data=kwargs)
+    
+    def detail(self, network_id: int):
+        return self.request(endpoint=f'v1/cartoons/networks/{network_id}/')
+    
+    def update(self, network_id: int, **kwargs):
+        return self.request(endpoint=f'v1/cartoons/networks/{network_id}/', method='PATCH', data=kwargs)
