@@ -51,3 +51,17 @@ class StaffClient(Base):
     
     def update(self, staff_id: int, **kwargs):
         return self.request(endpoint=f'v1/comics/staff/{staff_id}/', method='PATCH', data=kwargs)
+
+class StaffPositionsClient(Base):
+    def get_staffpositions(self, **kwargs):
+        return self.request(endpoint='v1/comics/staffpositions/', params=kwargs)
+    
+    def detail(self, position_id: int):
+        return self.request(endpoint=f'v1/comics/staffpositions/{position_id}/')
+
+class FormatsClient(Base):
+    def get_formats(self, **kwargs):
+        return self.request(endpoint='v1/comics/formats/', params=kwargs)
+    
+    def detail(self, format_id: int):
+        return self.request(endpoint=f'v1/comics/formats/{format_id}/')
