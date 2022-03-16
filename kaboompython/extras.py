@@ -53,3 +53,11 @@ CHARACTER_ALIGNMENT_OPTIONS = {
     'good': 'GOOD',
     'evil': 'EVIL'
 }
+
+FEED_TYPES = {
+    'comic': 'comic',
+    'issue': 'issue',
+    'cartoon': 'cartoon',
+    'episode': 'episode',
+    'thought': 'thought',
+}
