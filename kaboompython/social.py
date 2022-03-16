@@ -24,3 +24,7 @@ class ThoughtsClient(Base):
     
     def update_comment(self, comment_id: int, **kwargs):
         return self.request(endpoint=f'v1/social/comments/{comment_id}/', method='PATCH', data=kwargs)
+
+class FeedClient(Base):
+    def feed(self, **kwargs):
+        return self.request(endpoint='v1/social/feed/', params=kwargs)
