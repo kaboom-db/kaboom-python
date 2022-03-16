@@ -13,6 +13,18 @@ class CartoonsClient(Base):
     def update(self, cartoon_id: int, **kwargs):
         return self.request(endpoint=f'v1/cartoons/series/{cartoon_id}/', method='PATCH', data=kwargs)
 
+    def subscriptions(self, **kwargs):
+        return self.request(endpoint='v1/accounts/cartoons/subscriptions/', params=kwargs)
+
+    def subscribe(self, **kwargs):
+        return self.request(endpoint='v1/accounts/cartoons/subscriptions/', method='POST', data=kwargs)
+
+    def unsubscribe(self, **kwargs):
+        return self.request(endpoint='v1/accounts/cartoons/subscriptions/', method='DELETE', data=kwargs)
+
+    def rate(self, **kwargs):
+        return self.request(endpoint='v1/accounts/cartoons/subscriptions/rate/', method='POST', data=kwargs)
+
 class EpisodesClient(Base):
     def get_episodes(self, **kwargs):
         return self.request(endpoint='v1/cartoons/episodes/', params=kwargs)
