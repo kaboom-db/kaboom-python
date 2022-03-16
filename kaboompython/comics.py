@@ -25,3 +25,16 @@ class IssuesClient(Base):
     
     def update(self, issue_id: int, **kwargs):
         return self.request(endpoint=f'v1/comics/issues/{issue_id}/', method='PATCH', data=kwargs)
+
+class PublishersClient(Base):
+    def get_publishers(self, **kwargs):
+        return self.request(endpoint='v1/comics/publishers/', params=kwargs)
+
+    def add(self, **kwargs):
+        return self.request(endpoint='v1/comics/publishers/', method='POST', data=kwargs)
+    
+    def detail(self, publisher_id: int):
+        return self.request(endpoint=f'v1/comics/publishers/{publisher_id}/')
+    
+    def update(self, publisher_id: int, **kwargs):
+        return self.request(endpoint=f'v1/comics/publishers/{publisher_id}/', method='PATCH', data=kwargs)
