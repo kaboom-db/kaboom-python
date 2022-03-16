@@ -4,7 +4,6 @@ import os
 from .exceptions import KaboomException
 
 class Base:
-    # INSTANCE_URL = "https://staging-kaboom.herokuapp.com/v1/"
     INSTANCE_URL = "KABOOM_INSTANCE_URL"
     ACCESS_TOKEN = "KABOOM_ACCESS_TOKEN"
 
@@ -57,14 +56,19 @@ class Base:
         else:
             raise KaboomException(response.text)
 
-    def request(self, endpoint: str, method: str = "GET", data=None, params=None):
+    def request(self, endpoint: str, method: str = "GET", data=None, params=None, file=None):
         url = f"{self.url}/{endpoint}"
         headers = {
             'Content-type': 'application/json'
         }
         if self.access_token:
             headers.update({'Authorization': 'Token ' + self.access_token})
-        response = requests.request(method=method, url=url, params=params, json=data, headers=headers)
+        if file:
+            headers.pop('Content-type')
+            files = {'image': open(file,'rb')}
+            response = requests.request(method=method, url=url, params=params, data=data, headers=headers, files=files)
+        else:
+            response = requests.request(method=method, url=url, params=params, json=data, headers=headers)
         if response.status_code == 200 or response.status_code == 201:
             return response.json()
         else:
