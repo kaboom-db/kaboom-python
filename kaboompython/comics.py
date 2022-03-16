@@ -38,6 +38,18 @@ class IssuesClient(Base):
     def update(self, issue_id: int, **kwargs):
         return self.request(endpoint=f'v1/comics/issues/{issue_id}/', method='PATCH', data=kwargs)
 
+    def get_read(self, **kwargs):
+        return self.request(endpoint='v1/accounts/comics/readissues/', params=kwargs)
+
+    def read(self, **kwargs):
+        return self.request(endpoint='v1/accounts/comics/readissues/', method='POST', data=kwargs)
+
+    def unread(self, **kwargs):
+        return self.request(endpoint='v1/accounts/comics/readissues/', method='DELETE', data=kwargs)
+
+    def clean(self, **kwargs):
+        return self.request(endpoint='v1/accounts/comics/readissues/clean/', method='DELETE', data=kwargs)
+
 class PublishersClient(Base):
     def get_publishers(self, **kwargs):
         return self.request(endpoint='v1/comics/publishers/', params=kwargs)
