@@ -13,6 +13,18 @@ class ComicsClient(Base):
     def update(self, comic_id: int, **kwargs):
         return self.request(endpoint=f'v1/comics/series/{comic_id}/', method='PATCH', data=kwargs)
 
+    def subscriptions(self, **kwargs):
+        return self.request(endpoint='v1/accounts/comics/subscriptions/', params=kwargs)
+
+    def subscribe(self, **kwargs):
+        return self.request(endpoint='v1/accounts/comics/subscriptions/', method='POST', data=kwargs)
+
+    def unsubscribe(self, **kwargs):
+        return self.request(endpoint='v1/accounts/comics/subscriptions/', method='DELETE', data=kwargs)
+
+    def rate(self, **kwargs):
+        return self.request(endpoint='v1/accounts/comics/subscriptions/rate/', method='POST', data=kwargs)
+
 class IssuesClient(Base):
     def get_issues(self, **kwargs):
         return self.request(endpoint='v1/comics/issues/', params=kwargs)
