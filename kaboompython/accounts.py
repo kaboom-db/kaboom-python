@@ -9,6 +9,9 @@ class UsersClient(Base):
     
     def update(self, username: str, **kwargs):
         return self.request(endpoint=f'v1/accounts/users/{username}/', method='PATCH', data=kwargs)
+    
+    def report(self, **kwargs):
+        return self.request(endpoint=f'v1/accounts/report/', method='POST', data=kwargs)
 
 class ImageClient(Base):
     def upload(self, file, **kwargs):
