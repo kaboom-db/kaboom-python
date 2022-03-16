@@ -38,6 +38,18 @@ class EpisodesClient(Base):
     def update(self, episode_id:int, **kwargs):
         return self.request(endpoint=f'v1/cartoons/episodes/{episode_id}/', method='PATCH', data=kwargs)
 
+    def get_watched(self, **kwargs):
+        return self.request(endpoint='v1/accounts/cartoons/episodes/', params=kwargs)
+
+    def watch(self, **kwargs):
+        return self.request(endpoint='v1/accounts/cartoons/episodes/', method='POST', data=kwargs)
+
+    def unwatch(self, **kwargs):
+        return self.request(endpoint='v1/accounts/cartoons/episodes/', method='DELETE', data=kwargs)
+
+    def clean(self, **kwargs):
+        return self.request(endpoint='v1/accounts/cartoons/episodes/clean/', method='DELETE', data=kwargs)
+
 class CharactersClient(Base):
     def get_characters(self, **kwargs):
         return self.request(endpoint='v1/cartoons/characters/', params=kwargs)
