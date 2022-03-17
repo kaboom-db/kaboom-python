@@ -23,7 +23,7 @@ setup(
     install_requires=['requests'],
     keywords=['python', 'comics', 'cartoons', 'tracker'],
     classifiers=[
-        "Development Status :: 1 - Planning",
+        "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
         "Programming Language :: Python :: 3",
