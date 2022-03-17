@@ -38,7 +38,7 @@ print(user['token'])
 If you already have the users access token you can just set it like this and avoid making an api call with user credentials:
 
 ```python
-kaboom.access_token - 'aabbccggeeffgghhiijjkkllmmnnooppqqrrsstt'
+kaboom.access_token = 'aabbccggeeffgghhiijjkkllmmnnooppqqrrsstt'
 ```
 
 **Signing up**
