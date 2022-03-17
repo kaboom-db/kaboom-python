@@ -4,13 +4,17 @@ A Kaboom API Python wrapper. This wrapper implements all of the endpoints (comic
 
 ## Installation
 
+```
+pip install kaboom-python
+```
+
 ## Basic Usage
 
 **Searching for a comic**
 
 ```python
-from kaboompython.base import Base
-from kaboompython.comics import ComicsClient
+from kaboom_python.base import Base
+from kaboom_python.comics import ComicsClient
 
 kaboom = Base()
 # The url to the Kaboom instance. If this is not provided it will default to the staging instance
@@ -24,7 +28,7 @@ print(data)
 **Logging in**
 
 ```python
-from kaboompython.base import Base
+from kaboom_python.base import Base
 
 kaboom = Base()
 
@@ -44,7 +48,7 @@ kaboom.access_token = 'aabbccggeeffgghhiijjkkllmmnnooppqqrrsstt'
 **Signing up**
 
 ```python
-from kaboompython.base import Base
+from kaboom_python.base import Base
 
 kaboom = Base()
 

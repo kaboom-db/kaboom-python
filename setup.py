@@ -13,7 +13,7 @@ LONG_DESCRIPTION = 'A simple python package that can interface with any Kaboom i
 
 # Setting up
 setup(
-    name="kaboompython",
+    name="kaboom_python",
     version=VERSION,
     author="crxssed7",
     description=DESCRIPTION,
