@@ -28,7 +28,8 @@ from kaboompython.base import Base
 
 kaboom = Base()
 
-# Log in as the staging demo user. This saves the users access token as an environment variable and automatically authenticates auth required requests.
+# Log in as the staging demo user. This saves the users access token as an environment variable 
+# and automatically authenticates auth required requests.
 user = kaboom.login(username='demo', password='kaboom123')
 # Securely save the access token if needed
 print(user['token'])
